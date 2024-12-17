@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../providers/AuthProvider";
+import { useEffect, useState } from "react";
 import useFetch from "../../../hooks/UseFetch";
 import { Iusers } from "../../../types/UserType";
 import { NavLink } from "react-router-dom";

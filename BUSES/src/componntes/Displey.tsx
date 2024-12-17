@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Driverpage } from "../pages/Driver/Driverpage";
 import { Admin } from "../pages/admin/Admin";

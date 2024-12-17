@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
 const socket = io("http://localhost:3001", {
@@ -16,7 +16,7 @@ export const SocketPage = () => {
   const [currentRoom, setCurrentRoom] = useState("");
   const [userName, setUsername] = useState("");
   const [roomName, setRoomName] = useState("");
-  const [rooms, setRooms] = useState<string[]>([]);
+  // const [rooms, setRooms] = useState<string[]>([]);
 
   useEffect(() => {
     socket.on("receiveMessage", (newMessage: IChet) => {

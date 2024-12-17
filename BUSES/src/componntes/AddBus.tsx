@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import useFetch from "../hooks/UseFetch";
 import { IBuses } from "../types/BusesType";
 import { Iusers } from "../types/UserType";
-import { IRoutes } from "../types/routType";
 
 export const AddBus = () => {
   const { POST, GET, data } = useFetch<IBuses>("http://localhost:3001");

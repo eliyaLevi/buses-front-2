@@ -4,13 +4,13 @@ import useFetch from "../hooks/UseFetch";
 import { Iusers } from "../types/UserType";
 
 export const EditBus = () => {
-  const { GETOne, GET, PATCH, data } = useFetch("http://localhost:3001/buses");
+  const { GETOne, PATCH, data } = useFetch("http://localhost:3001/buses");
   const [licensePlate, setLicensePlate] = useState("");
   const [busmodel, setBusmodel] = useState("");
   const [capacity, setCapacity] = useState(0);
   const [status, setStatus] = useState("");
-  const [users, setUsers] = useState<Iusers[]>([]);
-  const [driverId, setDriverId] = useState("");
+  const [users] = useState<Iusers[]>([]);
+  const [setDriverId] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
 
