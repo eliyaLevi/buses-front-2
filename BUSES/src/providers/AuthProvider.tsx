@@ -21,7 +21,9 @@ interface AuthContextType {
 export const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const { POST, VerifyRefresh, data } = useFetch("http://localhost:3001");
+  const { POST, VerifyRefresh, data } = useFetch(
+    "https://buses-1.onrender.com"
+  );
 
   const [user, setUser] = useState<Iusers | null>(null);
   const [role, setRole] = useState("");
