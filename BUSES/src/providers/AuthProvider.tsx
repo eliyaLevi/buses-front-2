@@ -31,6 +31,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const clearError = () => setError(null);
 
   useEffect(() => {
+    setRole("");
     const RoleRefresh = Cookies.get("role");
 
     const verifyAndLogin = async () => {

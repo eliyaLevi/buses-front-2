@@ -51,6 +51,7 @@ export const AddBus = () => {
       capacity,
       status,
       driverId,
+      routes,
     });
 
     setLicensePlate("");
