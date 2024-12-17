@@ -3,7 +3,7 @@ import useFetch from "../../../hooks/UseFetch";
 import { Iusers } from "../../../types/UserType";
 
 export const RegisterPage = () => {
-  const { POST } = useFetch<Iusers>("http://localhost:3001");
+  const { POST } = useFetch<Iusers>("https://buses-1.onrender.com");
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

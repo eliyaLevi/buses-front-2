@@ -11,7 +11,9 @@ export interface ICurrentData {
 }
 
 export const AdminUsers = () => {
-  const { GETUSERSBYCALL, DELETE, data } = useFetch("http://localhost:3001");
+  const { GETUSERSBYCALL, DELETE, data } = useFetch(
+    "https://buses-1.onrender.com"
+  );
   const [currentData, setCurrentData] = useState<ICurrentData>();
   const [currentPage, setCurrentPage] = useState(1);
   const itemPerPage = 5;

@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 // }
 export const AdminBuses = () => {
   const { user } = useContext(AuthContext) ?? {};
-  const { GET, DELETE, data } = useFetch("http://localhost:3001");
+  const { GET, DELETE, data } = useFetch("https://buses-1.onrender.com");
   const [buses, setBuses] = useState<IBuses[]>([]);
 
   useEffect(() => {

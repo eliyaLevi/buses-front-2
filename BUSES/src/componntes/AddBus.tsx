@@ -28,7 +28,7 @@ export const AddBus = () => {
 
   const fetchAllLiens = async () => {
     try {
-      const response = await fetch("http://localhost:3001/routs");
+      const response = await fetch("https://buses-1.onrender.com/routs");
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(`HTTP error! ${errorData} `);

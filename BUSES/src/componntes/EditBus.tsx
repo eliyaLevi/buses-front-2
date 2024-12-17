@@ -4,7 +4,9 @@ import useFetch from "../hooks/UseFetch";
 import { Iusers } from "../types/UserType";
 
 export const EditBus = () => {
-  const { GETOne, PATCH, data } = useFetch("http://localhost:3001/buses");
+  const { GETOne, PATCH, data } = useFetch(
+    "https://buses-1.onrender.com/buses"
+  );
   const [licensePlate, setLicensePlate] = useState("");
   const [busmodel, setBusmodel] = useState("");
   const [capacity, setCapacity] = useState(0);

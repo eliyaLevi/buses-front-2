@@ -3,7 +3,9 @@ import useFetch from "../../../hooks/UseFetch";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const EditUser = () => {
-  const { GETOne, PATCH, data } = useFetch("http://localhost:3001/users");
+  const { GETOne, PATCH, data } = useFetch(
+    "https://buses-1.onrender.com/users"
+  );
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [role, setrole] = useState("");
