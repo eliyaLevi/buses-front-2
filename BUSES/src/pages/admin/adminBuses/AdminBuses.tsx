@@ -4,9 +4,9 @@ import useFetch from "../../../hooks/UseFetch";
 import { IBuses } from "../../../types/BusesType";
 import { NavLink } from "react-router-dom";
 
-interface HabasDto {
-  name: string;
-}
+// interface HabasDto {
+//   name: string;
+// }
 export const AdminBuses = () => {
   const { user } = useContext(AuthContext) ?? {};
   const { GET, DELETE, data } = useFetch("http://localhost:3001");

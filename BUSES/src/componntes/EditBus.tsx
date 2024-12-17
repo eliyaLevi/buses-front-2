@@ -10,7 +10,7 @@ export const EditBus = () => {
   const [capacity, setCapacity] = useState(0);
   const [status, setStatus] = useState("");
   const [users] = useState<Iusers[]>([]);
-  const [setDriverId] = useState("");
+  const [driverId, setDriverId] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -86,7 +86,7 @@ export const EditBus = () => {
               type="number"
               placeholder="Enter the your capacity"
               value={capacity}
-              onChange={(e) => setCapacity(e.target.value)}
+              onChange={(e) => setCapacity(Number(e.target.value))}
               required
             />
           </div>

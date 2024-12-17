@@ -91,7 +91,7 @@ export const AddBus = () => {
               type="number"
               placeholder="Enter the your capacity"
               value={capacity}
-              onChange={(e) => setCapacity(e.target.value)}
+              onChange={(e) => setCapacity(Number(e.target.value))}
               required
             />
           </div>
