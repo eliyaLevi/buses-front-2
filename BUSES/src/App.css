@@ -11,35 +11,150 @@ body {
 }
 
 header {
-  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #008475;
   color: white;
   text-align: center;
   font-weight: 600;
   text-shadow: #333;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 0 20px;
   height: 80px;
+  width: 100%;
   position: relative;
 }
 
 main {
   flex: 1;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   min-height: 85vh;
   overflow-y: auto;
   background-color: #f9f9f9;
+  width: 100%;
 }
 
 footer {
-  background-color: green;
+  background-color: #008475;
   color: black;
   text-align: center;
   padding: 20px;
   font-size: 1em;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+.admin {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 200px;
+  padding: 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 500px;
+  max-width: 800px;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input,
+textarea,
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+textarea {
+  grid-column: span 2;
+}
+
+button {
+  background-color: #009070;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px;
+  margin: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #286090;
+  color: white;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(140 140 140);
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+caption {
+  caption-side: bottom;
+  padding: 10px;
+  font-weight: bold;
+}
+
+thead,
+tfoot {
+  background-color: rgb(228 240 245);
+}
+
+th,
+td {
+  border: 1px solid rgb(160 160 160);
+  padding: 8px 10px;
+}
+
+td:last-of-type {
+  text-align: center;
+}
+
+tbody > tr:nth-of-type(even) {
+  background-color: rgb(237 238 242);
+}
+
+tfoot th {
+  text-align: right;
+}
+
+tfoot td {
+  font-weight: bold;
+}
+
+.buttan_table {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+.buttan_table button {
+  margin: 5px;
+  width: 170px;
 }

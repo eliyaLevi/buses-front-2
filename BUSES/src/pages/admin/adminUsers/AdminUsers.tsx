@@ -2,47 +2,101 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useFetch from "../../../hooks/UseFetch";
 import { Iusers } from "../../../types/UserType";
-import { NavLink } from "react-router-dom";
+import { matchPath, NavLink } from "react-router-dom";
+
+export interface ICurrentData {
+  users: Iusers[];
+  totalPages: number;
+  currentPage: number;
+  totalUsers: number;
+}
 
 export const AdminUsers = () => {
   const { user } = useContext(AuthContext) ?? {};
-  const { GET, DELETE, data } = useFetch("http://localhost:3001");
-  const [users, setUsers] = useState<Iusers[]>([]);
-  const [isDelete, setisDelete] = useState(false);
+  const { GETUSERSBYCALL, DELETE, data } = useFetch("http://localhost:3001");
+  const [currentData, setCurrentData] = useState<ICurrentData>();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemPerPage = 5;
+
+  const next = () => {
+    if (currentData)
+      if (currentPage < currentData.totalPages) {
+        setCurrentPage((prev) => prev + 1);
+      }
+  };
+
+  const back = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
   const deleteUser = (id: string) => {
     DELETE("users", id);
-    setisDelete(true);
   };
+
   useEffect(() => {
-    GET("users");
-  }, [isDelete]);
+    GETUSERSBYCALL("users", currentPage, itemPerPage);
+  }, [currentPage]);
 
   useEffect(() => {
     if (data) {
-      setUsers(data);
+      setCurrentData(data);
     }
   }, [data]);
 
   return (
     <>
-      <h1>List of all users</h1>
       <div>
-        {user &&
-          users.map((user) => (
-            <div>
-              <h2>{user.name}</h2>
-              <p>{user.email}</p>
-              <p>{user.role}</p>
-              <NavLink to={`/editUser/${user._id}`}>
-                <button>edit user</button>
-              </NavLink>
-              <button onClick={() => deleteUser(user._id)}>delete user</button>
-            </div>
-          ))}
+        <NavLink to={`/chet`}>
+          <button>Chet</button>
+        </NavLink>
+      </div>
+      <div className="list">
+        <h1>List of all users</h1>
         <div>
-          <NavLink to={`/register`}>
-            <button>add user</button>
-          </NavLink>
+          <div>
+            <NavLink to={`/register`}>
+              <button>add user</button>
+            </NavLink>
+          </div>
+        </div>
+
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">user name</th>
+                <th scope="col">email</th>
+                <th scope="col">role</th>
+                <th scope="col">edite/delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentData?.users.map((user) => (
+                <tr>
+                  <th scope="row">{user.name}</th>
+                  <td>{user.email}</td>
+                  <td>{user.role}</td>
+                  <td>
+                    <div className="buttan_table">
+                      <NavLink to={`/editUser/${user._id}`}>
+                        <button>edit user</button>
+                      </NavLink>
+                      <button onClick={() => deleteUser(user._id!)}>
+                        delete user
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <button onClick={back}>back</button>
+          <span>{`page ${currentPage} of ${currentData?.totalPages}`}</span>
+          <button onClick={next}>next</button>
         </div>
       </div>
     </>

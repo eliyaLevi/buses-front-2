@@ -1,4 +1,5 @@
 export interface IBuses extends Document {
+  _id?: string;
   licensePlate: string;
   busmodel: string;
   capacity: number;

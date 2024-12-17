@@ -18,6 +18,25 @@ export default function useFetch<T>(url: string): any {
       setError((error as Error).message || "An unknown error occurred.");
     }
   };
+
+  //   --------------GETUSERSBYCALL method--------------
+  const GETUSERSBYCALL = async (path: string, page: string, limit: string) => {
+    const query = `getUsersByCall?page=${page}&limit=${limit}`;
+    const r = `${url}/${path}/${query}`;
+    console.log(r);
+
+    try {
+      const response = await fetch(`${url}/${path}/${query}`);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(`HTTP error! ${errorData.error.message}`);
+      }
+      const result = await response.json();
+      setData(result);
+    } catch (error: unknown) {
+      setError((error as Error).message || "An unknown error occurred.");
+    }
+  };
   //   --------------GET One method--------------
   const GETOne = async (id: string) => {
     try {
@@ -94,6 +113,31 @@ export default function useFetch<T>(url: string): any {
     }
   };
 
+  const VerifyRefresh = async (endpoint: string) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3001/auth/VerifyRefresh/${endpoint}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error?.message || "Request failed");
+      }
+
+      const result = await response.json();
+      setData(result);
+      return result;
+    } catch (error) {
+      setError((error as Error).message || "An unknown error occurred.");
+      throw error;
+    }
+  };
+
   return {
     data,
     error,
@@ -102,5 +146,7 @@ export default function useFetch<T>(url: string): any {
     PATCH,
     DELETE,
     GETOne,
+    GETUSERSBYCALL,
+    VerifyRefresh,
   };
 }

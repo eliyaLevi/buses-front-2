@@ -1,7 +1,8 @@
-import React, { createContext, ReactNode, useState } from "react";
+import React, { createContext, ReactNode, useEffect, useState } from "react";
 import { Iusers } from "../types/UserType";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../hooks/UseFetch";
+import Cookies from "js-cookie";
 
 interface UserDTO {
   email: string;
@@ -30,6 +31,37 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate();
 
   const clearError = () => setError(null);
+
+  useEffect(() => {
+    const RoleRefresh = Cookies.get("role");
+
+    const verifyAndLogin = async () => {
+      if (RoleRefresh) {
+        try {
+          const success = await VerifyRefresh(RoleRefresh);
+
+          if (!success) {
+            handleLogout();
+          }
+          setUser(data);
+        } catch (error) {
+          console.error("Token verification error:", error);
+          handleLogout();
+        }
+      } else {
+        setUser(null);
+      }
+    };
+
+    const handleLogout = () => {
+      setUser(null);
+      Cookies.remove("auth_token");
+      Cookies.remove("role");
+      navigate("/");
+    };
+
+    verifyAndLogin();
+  }, []);
 
   const login = async (userClient: UserDTO): Promise<boolean> => {
     try {
