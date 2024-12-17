@@ -45,6 +45,7 @@ export const EditBus = () => {
       busmodel,
       capacity,
       status,
+      driverId,
     });
 
     setLicensePlate("");

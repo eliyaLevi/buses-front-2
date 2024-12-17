@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import useFetch from "../hooks/UseFetch";
 import { IBuses } from "../types/BusesType";
 import { Iusers } from "../types/UserType";
+import { IRoutes } from "../types/routType";
 
 export const AddBus = () => {
   const { POST, GET, data } = useFetch<IBuses>("http://localhost:3001");
@@ -12,7 +13,7 @@ export const AddBus = () => {
   const [status, setStatus] = useState("");
   const [driverId, setDriverId] = useState("");
   const [users, setUsers] = useState<Iusers[]>([]);
-  const [routes, setRoutes] = useState<any>([]);
+  const [routes, setRoutes] = useState<IRoutes[]>([]);
 
   useEffect(() => {
     GET("users");
@@ -116,12 +117,12 @@ export const AddBus = () => {
             </select>
           </div>
           <div>
-            <label htmlFor="routId">route</label>
+            {/* <label htmlFor="routId">route</label>
             <select id="routId" onChange={(e) => setRoutes(e.target.value)}>
               {routes.map((route) => (
                 <option value={route._id}>{route.name}</option>
               ))}
-            </select>
+            </select> */}
           </div>
           <button type="submit">add new bus</button>
         </form>
