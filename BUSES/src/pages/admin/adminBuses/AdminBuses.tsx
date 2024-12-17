@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useFetch from "../../../hooks/UseFetch";
 import { IBuses } from "../../../types/BusesType";
-import { Iusers } from "../../../types/UserType";
 import { NavLink } from "react-router-dom";
 
 interface HabasDto {

@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useFetch from "../../../hooks/UseFetch";
 import { Iusers } from "../../../types/UserType";
-import { matchPath, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export interface ICurrentData {
   users: Iusers[];
@@ -12,7 +12,6 @@ export interface ICurrentData {
 }
 
 export const AdminUsers = () => {
-  const { user } = useContext(AuthContext) ?? {};
   const { GETUSERSBYCALL, DELETE, data } = useFetch("http://localhost:3001");
   const [currentData, setCurrentData] = useState<ICurrentData>();
   const [currentPage, setCurrentPage] = useState(1);
